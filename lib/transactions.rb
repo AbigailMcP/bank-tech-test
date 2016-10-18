@@ -2,6 +2,8 @@ require './lib/transaction'
 
 class Transactions
 
+  attr_reader :log
+
   def initialize
     @log = []
   end

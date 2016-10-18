@@ -11,9 +11,20 @@ describe Transactions do
     allow(Transaction).to receive(:new) { transaction }
   end
 
-  it 'records a deposit' do
-    transactions.deposit(1000)
-    expect(Transaction).to have_received(:new)
+  describe '#deposit' do
+    before(:each) do
+      transactions.deposit(1000)
+    end
+
+    it 'creates a deposit' do
+      expect(Transaction).to have_received(:new)
+    end
+
+    it 'stores a deposit in the log' do
+      expect(transactions.log).to include transaction
+    end
+
   end
+
 
 end
