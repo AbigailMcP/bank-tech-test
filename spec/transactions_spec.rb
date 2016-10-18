@@ -25,5 +25,19 @@ describe Transactions do
     end
   end
 
+  describe '#withdraw' do
+    before(:each) do
+      transactions.withdraw(1000)
+    end
+
+    it 'creates a withdrawal' do
+      expect(Transaction).to have_received(:new)
+    end
+
+    it 'stores a deposit in the log' do
+      expect(transactions.log).to include transaction
+    end
+  end
+
 
 end

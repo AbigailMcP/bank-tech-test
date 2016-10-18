@@ -13,4 +13,9 @@ class Transactions
     @log << deposit
   end
 
+  def withdraw(amount)
+    withdrawal = Transaction.new(amount)
+    @log << withdrawal
+  end
+
 end
