@@ -8,13 +8,13 @@ class Transactions
     @log = []
   end
 
-  def deposit(amount)
-    deposit = Transaction.new(credit: amount)
+  def deposit(time, amount)
+    deposit = Transaction.new(time: time, credit: amount)
     @log << deposit
   end
 
-  def withdraw(amount)
-    withdrawal = Transaction.new(debit: amount)
+  def withdraw(time, amount)
+    withdrawal = Transaction.new(time: time, debit: amount)
     @log << withdrawal
   end
 

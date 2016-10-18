@@ -26,7 +26,7 @@ describe Account do
 
     it 'stores a deposit in the transaction log' do
       account.deposit(1000)
-      expect(transactions).to have_received(:deposit).with(1000, @time_now)
+      expect(transactions).to have_received(:deposit).with(@time_now, 1000)
     end
   end
 
@@ -41,7 +41,7 @@ describe Account do
 
     it 'stores a withdrawal in the transaction log' do
       account.withdraw(1000)
-      expect(transactions).to have_received(:withdraw).with(1000, @time_now)
+      expect(transactions).to have_received(:withdraw).with(@time_now, 1000)
     end
 
     it 'does not withdraw more than the current balance' do
