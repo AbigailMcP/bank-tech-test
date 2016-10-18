@@ -11,6 +11,8 @@ describe Account do
     allow(Transactions).to receive(:new) { transactions }
     allow(transactions).to receive(:deposit)
     allow(transactions).to receive(:withdraw)
+    @time_now = Time.now
+    allow(Time).to receive(:now).and_return(@time_now)
   end
 
   it 'has an initial balance of nil' do
@@ -24,7 +26,7 @@ describe Account do
 
     it 'stores a deposit in the transaction log' do
       account.deposit(1000)
-      expect(transactions).to have_received(:deposit).with(1000)
+      expect(transactions).to have_received(:deposit).with(1000, @time_now)
     end
   end
 
@@ -39,7 +41,7 @@ describe Account do
 
     it 'stores a withdrawal in the transaction log' do
       account.withdraw(1000)
-      expect(transactions).to have_received(:withdraw).with(1000)
+      expect(transactions).to have_received(:withdraw).with(1000, @time_now)
     end
 
     it 'does not withdraw more than the current balance' do

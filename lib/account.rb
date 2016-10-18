@@ -11,15 +11,15 @@ attr_reader :balance, :transactions
     @transactions = transactions || Transactions.new
   end
 
-  def deposit(amount)
+  def deposit(amount, time = Time.now)
     @balance += amount
-    transactions.deposit(amount)
+    transactions.deposit(amount, time)
   end
 
-  def withdraw(amount)
+  def withdraw(amount, time = Time.now)
     check_funds(amount)
     @balance -= amount
-    transactions.withdraw(amount)
+    transactions.withdraw(amount, time)
   end
 
   private
