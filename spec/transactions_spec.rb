@@ -23,7 +23,6 @@ describe Transactions do
     it 'stores a deposit in the log' do
       expect(transactions.log).to include transaction
     end
-
   end
 
 
