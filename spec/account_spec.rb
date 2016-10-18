@@ -6,11 +6,14 @@ describe Account do
 
   let(:Transactions) { double :Transactions }
   let(:transactions) { double :transactions }
+  let(:Statement) { double :Statement }
+  let(:statement) { double :statement }
 
   before(:each) do
     allow(Transactions).to receive(:new) { transactions }
     allow(transactions).to receive(:deposit)
     allow(transactions).to receive(:withdraw)
+    allow(Statement).to receive(:new) { statement }
     @time_now = Time.now
     allow(Time).to receive(:now).and_return(@time_now)
   end
@@ -46,6 +49,13 @@ describe Account do
 
     it 'does not withdraw more than the current balance' do
       expect{ account.withdraw(2000) }.to raise_error 'Insufficient funds'
+    end
+  end
+
+  describe '#print_statment' do
+    it 'creates a new statement' do
+      account.print_statment
+      expect(Statement).to have_received(:new).with(transactions, 0)
     end
   end
 
