@@ -17,7 +17,7 @@ describe Transactions do
     end
 
     it 'creates a deposit' do
-      expect(Transaction).to have_received(:new)
+      expect(Transaction).to have_received(:new).with(credit: 1000)
     end
 
     it 'stores a deposit in the log' do
@@ -31,7 +31,7 @@ describe Transactions do
     end
 
     it 'creates a withdrawal' do
-      expect(Transaction).to have_received(:new)
+      expect(Transaction).to have_received(:new).with(debit: 1000)
     end
 
     it 'stores a deposit in the log' do

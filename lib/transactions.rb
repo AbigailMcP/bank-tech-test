@@ -9,12 +9,12 @@ class Transactions
   end
 
   def deposit(amount)
-    deposit = Transaction.new(amount)
+    deposit = Transaction.new(credit: amount)
     @log << deposit
   end
 
   def withdraw(amount)
-    withdrawal = Transaction.new(amount)
+    withdrawal = Transaction.new(debit: amount)
     @log << withdrawal
   end
 
