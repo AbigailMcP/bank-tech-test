@@ -19,6 +19,7 @@ attr_reader :balance, :transactions
   def withdraw(amount)
     check_funds(amount)
     @balance -= amount
+    transactions.withdraw(amount)
   end
 
   private
