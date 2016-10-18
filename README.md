@@ -63,3 +63,33 @@ As an account holder
 So that I can manage my money
 I would like to not be overdrawn
 ```
+
+## Classes
+
+This program has four classes:
+1. Account  
+2. Transactions  
+3. Transaction  
+4. Statement  
+
+Account is the main 'interactive' class, including the methods `deposit`, `withdraw` and `print_statement`.  
+
+## Feature test
+
+The program is designed to be used through IRB as follows:
+
+```
+$ irb
+2.3.0 :001 > require './lib/account.rb'
+ => true
+2.3.0 :002 > account = Account.new
+ => #<Account:0x007f856b0e2b60 @balance=0, @transactions=#<Transactions:0x007f856b0e2b38 @log=[]>>
+2.3.0 :003 > account.deposit(20)
+ => [#<Transaction:0x007f856b0dae60 @time=2016-10-18 15:50:55 +0100, @credit=20, @debit=0, @balance=20>]
+2.3.0 :004 > account.withdraw(3)
+ => [#<Transaction:0x007f856b0dae60 @time=2016-10-18 15:50:55 +0100, @credit=20, @debit=0, @balance=20>, #<Transaction:0x007f856b0d30c0 @time=2016-10-18 15:50:57 +0100, @credit=0, @debit=3, @balance=17>]
+2.3.0 :005 > account.print_statement
+date || credit || debit || balance
+18/10/2016 || 20 || 0 || 20
+18/10/2016 || 0 || 3 || 17
+```
