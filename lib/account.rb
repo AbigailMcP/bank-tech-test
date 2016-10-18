@@ -13,6 +13,7 @@ attr_reader :balance
   end
 
   def withdraw(amount)
+    fail 'Insufficient funds' if @balance < amount
     @balance -= amount
   end
 
