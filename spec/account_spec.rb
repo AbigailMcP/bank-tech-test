@@ -4,6 +4,8 @@ describe Account do
 
   subject(:account) { described_class.new }
 
+  let(:transactions) { double :transactions, deposit: nil }
+
   it 'has an initial balance of nil' do
     expect(account.balance).to eq 0
   end
