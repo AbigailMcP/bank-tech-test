@@ -8,7 +8,7 @@ describe Statement do
 
   end
 
-  it 'prints out transactions' do
+  it 'create' do
 
   end
 

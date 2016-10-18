@@ -14,16 +14,16 @@ INITIAL_BALANCE = 0
 
   def deposit(time = Time.now, amount)
     @balance += amount
-    transactions.deposit(time, amount)
+    transactions.deposit(time, amount, balance)
   end
 
   def withdraw(time = Time.now, amount)
     check_funds(amount)
     @balance -= amount
-    transactions.withdraw(time, amount)
+    transactions.withdraw(time, amount, balance)
   end
 
-  def print_statment
+  def print_statement
     statement = Statement.new(transactions, balance)
   end
 

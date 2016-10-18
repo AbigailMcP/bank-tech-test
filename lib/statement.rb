@@ -5,4 +5,10 @@ class Statement
     @balance = balance
   end
 
+  # def printify
+  #   @transactions.log.each do |transaction|
+  #     puts "#{transaction.time} + || #{transaction.credit} + || #{transaction.debit}"
+  #   end
+  # end
+
 end
