@@ -5,14 +5,12 @@ describe Account do
   subject(:account) { described_class.new }
 
   let(:Transactions) { double :Transactions }
-  let(:transactions) { double :transactions }
+  let(:transactions) { double :transactions, deposit: nil, withdraw: nil }
   let(:Statement) { double :Statement }
-  let(:statement) { double :statement }
+  let(:statement) { double :statement, printify: nil }
 
   before(:each) do
     allow(Transactions).to receive(:new) { transactions }
-    allow(transactions).to receive(:deposit)
-    allow(transactions).to receive(:withdraw)
     allow(Statement).to receive(:new) { statement }
     @time_now = Time.now
     allow(Time).to receive(:now).and_return(@time_now)
@@ -55,7 +53,7 @@ describe Account do
   describe '#print_statment' do
     it 'creates a new statement' do
       account.print_statement
-      expect(Statement).to have_received(:new).with(transactions, 0)
+      expect(Statement).to have_received(:new).with(transactions)
     end
   end
 

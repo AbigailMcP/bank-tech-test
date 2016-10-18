@@ -24,7 +24,8 @@ INITIAL_BALANCE = 0
   end
 
   def print_statement
-    statement = Statement.new(transactions, balance)
+    statement = Statement.new(transactions)
+    statement.printify
   end
 
   private
